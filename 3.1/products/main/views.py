@@ -1,18 +1,18 @@
-import json
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from serializers import ReviewSerializer, ProductListSerializer, ProductDetailsSerializer
-from models import Product, Review
+from main.serializers import ReviewSerializer, ProductListSerializer, ProductDetailsSerializer
+from main.models import Product, Review
 
 @api_view(['GET'])
 def products_list_view(request):
     # """реализуйте получение всех товаров из БД
     # реализуйте сериализацию полученных данных
     # отдайте отсериализованные данные в Response"""
-    ser = ProductListSerializer(Product.objects.all(), many=True)
+    products_view = Product.objects.all()
+    ser = ProductListSerializer(products_view, many=True)
     return Response(ser.data)
     # pass
 
@@ -22,7 +22,11 @@ class ProductDetailsView(APIView):
         # """реализуйте получение товара по id, если его нет, то выдайте 404
         # реализуйте сериализацию полученных данных
         # отдайте отсериализованные данные в Response"""
-        pass
+        details_view = Product.objects.get(id=product_id)
+        ser = ProductDetailsSerializer(details_view, many=True)
+        return Response(ser.data)
+        # pass
+
 
 
 # доп задание:

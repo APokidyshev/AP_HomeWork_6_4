@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'HomeWork_6_4',
         'USER': 'postgres',
-        'PASSWORD': '22332233aaa',
+        'PASSWORD': 'пароль',
         'HOST': "localhost",
         "PORT": 5432
     }

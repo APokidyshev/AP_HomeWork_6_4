@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path
 
 from main.views import products_list_view, ProductDetailsView, ProductFilteredReviews
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', products_list_view),

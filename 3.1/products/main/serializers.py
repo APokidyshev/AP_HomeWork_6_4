@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Product, Review
+from main.models import Product, Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
@@ -18,5 +18,10 @@ class ProductListSerializer(serializers.Serializer):
 
 
 class ProductDetailsSerializer(serializers.ModelSerializer):
+    reviwes = ReviewSerializer(many=True, read_only=True)
+
     # реализуйте поля title, description, price и reviews (список отзывов к товару)
-    pass
+    class Meta:
+        model = Product
+        fields = ['id', 'title', 'description', 'price',  'reviwes']
+    # pass
